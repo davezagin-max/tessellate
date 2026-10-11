@@ -47,6 +47,23 @@ describe("validateProgram", () => {
     expect(errorsOf(program([{ size: "big" as unknown as number }]))).not.toEqual([]);
   });
 
+  it("drops fields the language does not define", () => {
+    const input = {
+      ...program([{}]),
+      onload: "alert(1)",
+      layers: [{ ...defaultLayer(), script: "x" }],
+    };
+    const result = validateProgram(input);
+    expect(result.ok && Object.keys(result.program)).toEqual([
+      "title",
+      "seed",
+      "background",
+      "palette",
+      "layers",
+    ]);
+    expect(result.ok && "script" in result.program.layers[0]).toBe(false);
+  });
+
   it("clamps out-of-range numbers and says what it changed", () => {
     const result = validateProgram(
       program([{ symmetry: "p4m", cell: 0.001, size: 99, sides: 6.4, strokeWidth: -3 }]),

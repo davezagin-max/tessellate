@@ -1,10 +1,21 @@
 "use client";
 
+import type { ErrorKind } from "@/lib/api";
 import type { Program } from "@/lib/geometry/dsl";
 import type { Frame, SessionState } from "@/lib/refine/session";
 import { MAX_REVIEWS } from "@/lib/refine/types";
 
 const frameName = (index: number) => (index === 0 ? "First draft" : `Revision ${index}`);
+
+const ERROR_TITLE: Record<ErrorKind, string> = {
+  demo_miss: "Nothing recorded for that request",
+  auth: "That key did not work",
+  rate_limit: "Slow down a moment",
+  refusal: "Request declined",
+  invalid: "Request not accepted",
+  too_large: "Render too large to send",
+  server: "The session stopped",
+};
 
 function Check() {
   return (
@@ -175,10 +186,11 @@ function summary(session: SessionState): string | null {
 interface SessionViewProps {
   session: SessionState;
   onOpen: (program: Program) => void;
+  onAddKey: () => void;
 }
 
 /** Iterations side by side: each render, Claude's critique of it, and its score. */
-export function SessionView({ session, onOpen }: SessionViewProps) {
+export function SessionView({ session, onOpen, onAddKey }: SessionViewProps) {
   const { phase, frames } = session;
   const busy = phase === "writing" || phase === "drawing" || phase === "reviewing";
   const pending =
@@ -198,6 +210,25 @@ export function SessionView({ session, onOpen }: SessionViewProps) {
       data-refine-phase={phase}
       data-refine-outcome={session.outcome ?? ""}
     >
+      {phase === "error" && session.error && (
+        <div role="alert" className="border-l-2 border-danger bg-bg px-4 py-3 text-sm leading-6">
+          <p className="font-semibold text-danger">{ERROR_TITLE[session.error.kind]}</p>
+          <p className="text-muted">{session.error.message}</p>
+          {frames.length > 0 && (
+            <p className="text-muted">The steps that finished before the error are kept below.</p>
+          )}
+          {(session.error.kind === "auth" || session.error.kind === "demo_miss") && (
+            <button
+              type="button"
+              onClick={onAddKey}
+              className="mt-1 font-medium underline underline-offset-4"
+            >
+              {session.error.kind === "auth" ? "Change key" : "Add your key"}
+            </button>
+          )}
+        </div>
+      )}
+
       <ol className="grid gap-x-5 gap-y-8 sm:grid-cols-3">
         {frames.map((frame) => (
           <FrameCard

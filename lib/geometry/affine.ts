@@ -24,13 +24,6 @@ export function rotate(degrees: number): Affine {
   return [cos, sin, -sin, cos, 0, 0];
 }
 
-/** Mirror across the line through the origin at `degrees` from the x axis. */
-export function mirror(degrees: number): Affine {
-  const cos = Math.cos(2 * degrees * RAD);
-  const sin = Math.sin(2 * degrees * RAD);
-  return [cos, sin, sin, -cos, 0, 0];
-}
-
 /** `compose(m, n)` applies `n` first, then `m`. */
 export function compose(m: Affine, n: Affine): Affine {
   return [
@@ -57,10 +50,6 @@ export function applyFlat(m: Affine, pts: readonly number[]): number[] {
     out[i + 1] = m[1] * x + m[3] * y + m[5];
   }
   return out;
-}
-
-export function determinant(m: Affine): number {
-  return m[0] * m[3] - m[1] * m[2];
 }
 
 /** True when the linear part is orthogonal, so the map preserves every distance. */

@@ -2,7 +2,6 @@
 
 import { useId } from "react";
 import { CostMeter } from "@/components/kit/CostMeter";
-import type { ErrorKind } from "@/lib/api";
 import type { SessionState } from "@/lib/refine/session";
 import { EFFORTS, LIMITS, MAX_REVIEWS, type RefineEffort } from "@/lib/refine/types";
 
@@ -10,16 +9,6 @@ const EFFORT_NOTE: Record<RefineEffort, string> = {
   low: "Fastest and cheapest. Thinks least before answering.",
   medium: "A balance of cost and care.",
   high: "Thinks longest. Costs most, usually needs fewer revisions.",
-};
-
-const ERROR_TITLE: Record<ErrorKind, string> = {
-  demo_miss: "No recorded session for that",
-  auth: "That key did not work",
-  rate_limit: "Slow down a moment",
-  refusal: "Claude declined",
-  invalid: "That request was not accepted",
-  too_large: "The render was too large to send",
-  server: "Something went wrong",
 };
 
 interface RefinePanelProps {
@@ -203,22 +192,6 @@ export function RefinePanel({
           )}
         </div>
       </div>
-
-      {session.phase === "error" && session.error && (
-        <div role="alert" className="border-l-2 border-danger pl-3 text-[13px] leading-5">
-          <p className="font-medium text-danger">{ERROR_TITLE[session.error.kind]}</p>
-          <p className="mt-0.5 text-muted">{session.error.message}</p>
-          {(session.error.kind === "auth" || session.error.kind === "demo_miss") && (
-            <button
-              type="button"
-              onClick={onAddKey}
-              className="mt-1.5 text-fg underline underline-offset-2"
-            >
-              {session.error.kind === "auth" ? "Change key" : "Add your key"}
-            </button>
-          )}
-        </div>
-      )}
     </div>
   );
 }

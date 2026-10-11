@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <style>
+    .ink { fill: #111111; }
+    @media (prefers-color-scheme: dark) { .ink { fill: #f1f1ef; } }
+  </style>
+  <path class="ink" d="M12 12 3.4 7 12 2z"/>
+  <path fill="#d9381e" d="M12 12 12 2l8.6 5z"/>
+  <path class="ink" opacity="0.28" d="M12 12 20.6 7v10z"/>
+  <path class="ink" d="M12 12 20.6 17 12 22z"/>
+  <path class="ink" opacity="0.28" d="M12 12 12 22l-8.6-5z"/>
+  <path class="ink" opacity="0.6" d="M12 12 3.4 17V7z"/>
+</svg>

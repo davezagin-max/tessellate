@@ -169,13 +169,12 @@ export function Controls({ program, layerIndex, onLayerIndex, onChange }: Contro
   return (
     <div className="flex flex-col gap-5">
       <div className="flex flex-wrap items-center gap-2">
-        <div role="tablist" aria-label="Layers" className="flex flex-wrap gap-1.5">
+        <div role="group" aria-label="Layers" className="flex flex-wrap gap-1.5">
           {program.layers.map((l, i) => (
             <button
               key={i}
               type="button"
-              role="tab"
-              aria-selected={i === index}
+              aria-pressed={i === index}
               onClick={() => onLayerIndex(i)}
               className={`border px-2.5 py-1.5 text-[13px] ${
                 i === index

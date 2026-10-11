@@ -1,8 +1,79 @@
 {
+  "port": 3210,
   "shots": [
-    { "name": "hero", "path": "/", "theme": "light", "viewport": "desktop", "actions": [{ "click": "text=a powder day in the Wasatch" }, { "waitFor": "figure" }] },
-    { "name": "hero-dark", "path": "/", "theme": "dark", "viewport": "desktop", "actions": [{ "click": "text=a powder day in the Wasatch" }, { "waitFor": "figure" }] },
-    { "name": "mobile", "path": "/", "theme": "dark", "viewport": "mobile", "actions": [{ "click": "text=the first drop in a house set" }, { "waitFor": "figure" }] }
+    {
+      "name": "hero",
+      "path": "/",
+      "theme": "light",
+      "viewport": "desktop",
+      "actions": [
+        {
+          "click": "[data-testid=refine]"
+        },
+        {
+          "waitFor": "[data-refine-phase=done]"
+        },
+        {
+          "wait": 600
+        }
+      ]
+    },
+    {
+      "name": "gallery",
+      "path": "/",
+      "theme": "light",
+      "viewport": "desktop",
+      "actions": [
+        {
+          "wait": 900
+        }
+      ]
+    },
+    {
+      "name": "hero-dark",
+      "path": "/?preset=penrose-sun",
+      "theme": "dark",
+      "viewport": "desktop",
+      "actions": [
+        {
+          "click": "[data-testid=refine]"
+        },
+        {
+          "waitFor": "[data-refine-phase=done]"
+        },
+        {
+          "wait": 600
+        }
+      ]
+    },
+    {
+      "name": "mobile",
+      "path": "/?preset=leaded-glass",
+      "theme": "light",
+      "viewport": "mobile",
+      "actions": [
+        {
+          "wait": 900
+        }
+      ]
+    }
   ],
-  "gif": { "path": "/", "theme": "dark", "actions": [{ "wait": 500 }, { "click": "text=a powder day in the Wasatch" }, { "waitFor": "figure" }, { "wait": 1200 }] }
+  "gif": {
+    "path": "/",
+    "theme": "light",
+    "actions": [
+      {
+        "wait": 900
+      },
+      {
+        "click": "[data-testid=refine]"
+      },
+      {
+        "waitFor": "[data-refine-phase=done]"
+      },
+      {
+        "wait": 1800
+      }
+    ]
+  }
 }

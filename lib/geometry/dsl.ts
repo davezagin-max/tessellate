@@ -364,11 +364,6 @@ export const PARAMS: readonly ParamSpec[] = [
   },
 ];
 
-export const PARAM_BY_KEY = Object.fromEntries(PARAMS.map((spec) => [spec.key, spec])) as Record<
-  NumericKey,
-  ParamSpec
->;
-
 /** The numeric range that applies to `key` for a given generator. */
 export function rangeFor(spec: ParamSpec, generator: Generator): { min: number; max: number } {
   return {

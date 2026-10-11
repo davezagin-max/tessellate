@@ -198,6 +198,14 @@ function StudioInner({ initialPreset, initialEffort, recording }: StudioInnerPro
   const pristine = preset !== null && draft === preset.program;
   const title = good.program.title;
   const hasSession = session.phase !== "idle";
+  // Where the program on the canvas came from, for the caption.
+  const origin = pristine
+    ? "Preset"
+    : draft === session.proposal
+      ? "Claude's unreviewed revision"
+      : session.frames.some((frame) => frame.program === draft)
+        ? "Written by Claude"
+        : "Edited by hand";
 
   return (
     <>
@@ -205,8 +213,8 @@ function StudioInner({ initialPreset, initialEffort, recording }: StudioInnerPro
         <div ref={stage} className="flex min-w-0 scroll-mt-4 flex-col">
           {hasSession && (
             <div
-              role="tablist"
-              aria-label="Stage"
+              role="group"
+              aria-label="Stage view"
               className="flex border-b border-border bg-wall px-2 pt-2"
             >
               {(
@@ -218,8 +226,7 @@ function StudioInner({ initialPreset, initialEffort, recording }: StudioInnerPro
                 <button
                   key={id}
                   type="button"
-                  role="tab"
-                  aria-selected={view === id}
+                  aria-pressed={view === id}
                   onClick={() => setView(id)}
                   className={`-mb-px border border-b-0 px-4 py-2 text-[13px] ${
                     view === id
@@ -234,8 +241,8 @@ function StudioInner({ initialPreset, initialEffort, recording }: StudioInnerPro
           )}
 
           {view === "refine" && hasSession ? (
-            <div role="tabpanel" className="flex-1 bg-wall px-4 py-6 sm:px-6">
-              <SessionView session={session} onOpen={openInStudio} />
+            <div className="flex-1 bg-wall px-4 py-6 sm:px-6">
+              <SessionView session={session} onOpen={openInStudio} onAddKey={openKeyModal} />
             </div>
           ) : (
             <figure className="flex flex-1 flex-col items-center justify-center bg-wall px-4 py-6 sm:px-10 sm:py-10">
@@ -258,7 +265,7 @@ function StudioInner({ initialPreset, initialEffort, recording }: StudioInnerPro
 
         <div className="flex min-w-0 flex-col gap-6">
           <div>
-            <p className="label">{pristine ? "Preset" : "Edited"}</p>
+            <p className="label">{origin}</p>
             <h2 className="mt-1 text-3xl font-semibold tracking-tight">{title}</h2>
             <p className="mt-2 text-sm text-muted">{describe(good.program)}</p>
             <p className="mt-1 font-mono text-xs text-muted">

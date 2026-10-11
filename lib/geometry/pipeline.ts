@@ -14,7 +14,7 @@
  * plotter exporter all read the same scene, so they cannot disagree about
  * what the artwork is.
  */
-import { applyFlat, compose, rotate, scale, translate, type Affine } from "./affine";
+import { IDENTITY, applyFlat, compose, rotate, scale, translate, type Affine } from "./affine";
 import { LIMITS, isWallpaper, type Layer, type Program } from "./dsl";
 import { generateMotif } from "./generators";
 import { signedArea } from "./generators/types";
@@ -145,14 +145,14 @@ interface Emitted {
 }
 
 function symmetryMaps(layer: Layer): { maps: Affine[]; lattice: Lattice | null } {
-  if (layer.symmetry === "none") return { maps: [[1, 0, 0, 1, 0, 0]], lattice: null };
+  if (layer.symmetry === "none") return { maps: [IDENTITY], lattice: null };
   if (layer.symmetry === "radial")
     return { maps: radialMaps(layer.order, layer.mirror), lattice: null };
   if (isWallpaper(layer.symmetry)) {
     const { maps, lattice } = wallpaperMaps(layer.symmetry, layer.cell, layer.cellAspect);
     return { maps, lattice };
   }
-  return { maps: [[1, 0, 0, 1, 0, 0]], lattice: null };
+  return { maps: [IDENTITY], lattice: null };
 }
 
 /**
