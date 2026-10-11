@@ -56,6 +56,23 @@
           "wait": 900
         }
       ]
+    },
+    {
+      "name": "studio",
+      "path": "/?preset=penrose-sun",
+      "theme": "light",
+      "viewport": "desktop",
+      "actions": [
+        {
+          "wait": 700
+        },
+        {
+          "scroll": 850
+        },
+        {
+          "wait": 500
+        }
+      ]
     }
   ],
   "gif": {
