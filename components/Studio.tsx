@@ -61,9 +61,11 @@ interface StudioInnerProps {
   initialEffort: RefineEffort | null;
   /** Set by `pnpm record` (`?record=1`): send fixture ids and the PNG even without a browser key. */
   recording: boolean;
+  /** True while the session fixtures are hand-written samples, not recorded model runs. */
+  sampleData: boolean;
 }
 
-function StudioInner({ initialPreset, initialEffort, recording }: StudioInnerProps) {
+function StudioInner({ initialPreset, initialEffort, recording, sampleData }: StudioInnerProps) {
   const { apiKey, isLive, openKeyModal } = useKey();
   const canWrite = isLive || recording;
 
@@ -177,8 +179,10 @@ function StudioInner({ initialPreset, initialEffort, recording }: StudioInnerPro
       last &&
       abort.current === controller
     ) {
-      if (preset && sameProgram(last.program, preset.program)) edit(preset.program);
-      else edit(last.program);
+      // A replay that ends on the gallery program is that preset again; a live result is always Claude's.
+      if (demo !== null && preset && sameProgram(last.program, preset.program)) {
+        edit(preset.program);
+      } else edit(last.program);
       setLayerIndex(0);
       // A fresh live run replaced the preset on the canvas, so nothing in the gallery is selected.
       if (demo === null) setPreset(null);
@@ -200,13 +204,19 @@ function StudioInner({ initialPreset, initialEffort, recording }: StudioInnerPro
   const pristine = preset !== null && draft === preset.program;
   const title = good.program.title;
   const hasSession = session.phase !== "idle";
+  // A replay of hand-written fixtures must never be captioned as the model's work.
+  const sample = session.meta ? session.meta.placeholder : sampleData && !canWrite;
   // Where the program on the canvas came from, for the caption.
   const origin = pristine
     ? "Preset"
     : draft === session.proposal
-      ? "Claude's unreviewed revision"
+      ? sample
+        ? "Sample session · unreviewed revision"
+        : "Claude's unreviewed revision"
       : session.frames.some((frame) => frame.program === draft)
-        ? "Written by Claude"
+        ? sample
+          ? "Sample session · not a model run"
+          : "Written by Claude"
         : "Edited by hand";
 
   return (
@@ -244,7 +254,12 @@ function StudioInner({ initialPreset, initialEffort, recording }: StudioInnerPro
 
           {view === "refine" && hasSession ? (
             <div className="flex-1 bg-wall px-4 py-6 sm:px-6">
-              <SessionView session={session} onOpen={openInStudio} onAddKey={openKeyModal} />
+              <SessionView
+                session={session}
+                sample={sample}
+                onOpen={openInStudio}
+                onAddKey={openKeyModal}
+              />
             </div>
           ) : (
             <figure className="flex flex-1 flex-col items-center justify-center bg-wall px-4 py-6 sm:px-10 sm:py-10">
@@ -281,6 +296,7 @@ function StudioInner({ initialPreset, initialEffort, recording }: StudioInnerPro
             effort={effort}
             onEffort={setChosenEffort}
             recorded={recorded}
+            sampleData={sampleData}
             session={session}
             onStart={start}
             onStop={stop}
@@ -296,10 +312,14 @@ function StudioInner({ initialPreset, initialEffort, recording }: StudioInnerPro
           </h2>
           <p className="flex items-center gap-1.5 text-xs text-muted">
             <span aria-hidden className="size-2 rounded-full bg-accent" />
-            has a recorded refinement session
+            has a {sampleData ? "sample" : "recorded"} refinement session
           </p>
         </div>
-        <PresetStrip selectedId={preset?.id ?? null} onSelect={selectPreset} />
+        <PresetStrip
+          selectedId={preset?.id ?? null}
+          onSelect={selectPreset}
+          sessionLabel={sampleData ? "sample refinement session" : "recorded refinement session"}
+        />
       </section>
 
       <section aria-labelledby="tune-heading" className="mt-14 border-t border-border pt-10">
@@ -339,18 +359,21 @@ function StudioInner({ initialPreset, initialEffort, recording }: StudioInnerPro
 }
 
 /** Reads `?preset=`, `?effort=`, and `?record=` once, then hands over to the studio proper. */
-export function Studio() {
+export function Studio({ sampleData }: { sampleData: boolean }) {
   const search = useSyncExternalStore(neverChanges, readSearch, noSearch);
   const params = new URLSearchParams(search);
   const requested = params.get("preset");
   const preset = (requested && PRESET_BY_ID[requested]) || DEFAULT_PRESET;
   const effort = EFFORTS.find((level) => level === params.get("effort")) ?? null;
+  // Recording is a development tool (`pnpm record` drives `next dev`); a deployed build ignores the flag.
+  const recording = process.env.NODE_ENV !== "production" && params.has("record");
   return (
     <StudioInner
       key={`${preset.id}:${effort}`}
       initialPreset={preset}
       initialEffort={effort}
-      recording={params.has("record")}
+      recording={recording}
+      sampleData={sampleData}
     />
   );
 }

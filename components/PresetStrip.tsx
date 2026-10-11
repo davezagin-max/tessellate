@@ -35,12 +35,14 @@ function Thumb({ preset, index }: { preset: Preset; index: number }) {
 interface PresetStripProps {
   selectedId: string | null;
   onSelect: (preset: Preset) => void;
+  /** What the dot on a preset means, in words ("sample refinement session" until real runs exist). */
+  sessionLabel: string;
 }
 
 /** The gallery wall: twelve presets, each a real program rendered live. */
-export function PresetStrip({ selectedId, onSelect }: PresetStripProps) {
+export function PresetStrip({ selectedId, onSelect, sessionLabel }: PresetStripProps) {
   return (
-    <ul className="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-3 lg:mx-0 lg:grid lg:grid-cols-12 lg:overflow-visible lg:px-0 lg:pb-0">
+    <ul className="-mx-4 flex snap-x scroll-px-4 gap-3 overflow-x-auto px-4 pb-3 pt-2 lg:mx-0 lg:grid lg:grid-cols-12 lg:overflow-visible lg:px-0 lg:pb-0 lg:pt-0">
       {PRESETS.map((preset, index) => {
         const selected = preset.id === selectedId;
         return (
@@ -49,9 +51,7 @@ export function PresetStrip({ selectedId, onSelect }: PresetStripProps) {
               type="button"
               onClick={() => onSelect(preset)}
               aria-pressed={selected}
-              title={
-                preset.session ? `${preset.title} (recorded refinement session)` : preset.title
-              }
+              title={preset.session ? `${preset.title} (${sessionLabel})` : preset.title}
               className="group block w-full text-left"
             >
               <span

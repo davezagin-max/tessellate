@@ -3,12 +3,16 @@
 import { useId } from "react";
 import { CostMeter } from "@/components/kit/CostMeter";
 import type { SessionState } from "@/lib/refine/session";
+import { RECORDED_SESSIONS } from "@/lib/refine/sessions";
 import { EFFORTS, LIMITS, MAX_REVIEWS, type RefineEffort } from "@/lib/refine/types";
+
+/** How many gallery presets ship with a session to replay. */
+const SESSION_PRESETS = new Set(RECORDED_SESSIONS.map((session) => session.preset)).size;
 
 const EFFORT_NOTE: Record<RefineEffort, string> = {
   low: "Fastest and cheapest. Thinks least before answering.",
   medium: "A balance of cost and care.",
-  high: "Thinks longest. Costs most, usually needs fewer revisions.",
+  high: "Thinks longest before answering. Slowest and most expensive.",
 };
 
 interface RefinePanelProps {
@@ -20,6 +24,8 @@ interface RefinePanelProps {
   onEffort: (effort: RefineEffort) => void;
   /** Efforts with a recorded session for the current preset. Only consulted in demo mode. */
   recorded: RefineEffort[];
+  /** True while those sessions are hand-written samples, so the copy never calls them recorded. */
+  sampleData: boolean;
   session: SessionState;
   onStart: () => void;
   onStop: () => void;
@@ -34,6 +40,7 @@ export function RefinePanel({
   effort,
   onEffort,
   recorded,
+  sampleData,
   session,
   onStart,
   onStop,
@@ -82,7 +89,8 @@ export function RefinePanel({
               {prompt}
             </p>
             <p className="text-xs leading-5 text-muted">
-              Demo mode replays recorded sessions, so the prompt is fixed.{" "}
+              Demo mode replays {sampleData ? "sample" : "recorded"} sessions, so the prompt is
+              fixed.{" "}
               <button
                 type="button"
                 onClick={onAddKey}
@@ -107,7 +115,9 @@ export function RefinePanel({
                 title={
                   available
                     ? EFFORT_NOTE[level]
-                    : "No session was recorded at this effort. Add a key to use it."
+                    : sampleData
+                      ? "There is no sample session at this effort. Add a key to use it."
+                      : "No session was recorded at this effort. Add a key to use it."
                 }
                 className={`relative border-l border-border text-center text-[13px] first:border-l-0 ${
                   available ? "cursor-pointer" : "cursor-not-allowed"
@@ -135,7 +145,7 @@ export function RefinePanel({
             (recorded.length === 0
               ? " Effort applies once you run this with a key."
               : recorded.length < EFFORTS.length &&
-                ` Recorded for this preset: ${recorded.join(" and ")}.`)}
+                ` ${sampleData ? "Sample sessions" : "Recorded"} for this preset: ${recorded.join(" and ")}.`)}
         </p>
       </fieldset>
 
@@ -177,8 +187,8 @@ export function RefinePanel({
               Add a key to refine this
             </button>
             <p className="text-xs leading-5 text-muted">
-              There is no recorded session for this one. The three presets marked with a red dot
-              have one.
+              There is no session to replay for this one. The {SESSION_PRESETS} presets marked with
+              a dot in the gallery have one.
             </p>
           </>
         )}

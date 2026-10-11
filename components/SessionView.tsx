@@ -185,12 +185,14 @@ function summary(session: SessionState): string | null {
 
 interface SessionViewProps {
   session: SessionState;
+  /** True when this session replays hand-written fixtures rather than a model run. */
+  sample: boolean;
   onOpen: (program: Program) => void;
   onAddKey: () => void;
 }
 
 /** Iterations side by side: each render, Claude's critique of it, and its score. */
-export function SessionView({ session, onOpen, onAddKey }: SessionViewProps) {
+export function SessionView({ session, sample, onOpen, onAddKey }: SessionViewProps) {
   const { phase, frames } = session;
   const busy = phase === "writing" || phase === "drawing" || phase === "reviewing";
   const pending =
@@ -227,6 +229,17 @@ export function SessionView({ session, onOpen, onAddKey }: SessionViewProps) {
             </button>
           )}
         </div>
+      )}
+
+      {sample && (
+        <p
+          data-testid="sample-note"
+          className="border-l-2 border-accent bg-bg px-3 py-2 text-[13px] leading-5 text-muted"
+        >
+          <span className="font-medium text-fg">Sample session.</span> The programs and reviews
+          below were written by hand to show the loop. The renders are drawn here, live, from those
+          programs. Nothing in this session is a recorded model run.
+        </p>
       )}
 
       <ol className="grid gap-x-5 gap-y-8 sm:grid-cols-3">

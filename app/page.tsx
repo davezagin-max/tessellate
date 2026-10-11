@@ -38,7 +38,7 @@ export default function Home() {
         </nav>
       </header>
       <main id="main" className="mx-auto w-full max-w-[78rem] flex-1 px-4 pb-16 lg:px-8">
-        <Studio />
+        <Studio sampleData={SAMPLE_DATA} />
       </main>
       <footer className="border-t border-border px-4 py-5 text-center text-xs text-muted">
         Built with Claude Code and Claude Opus 5.5.

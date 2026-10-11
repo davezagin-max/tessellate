@@ -9,6 +9,7 @@ import {
   PARAMS,
   SYMMETRIES,
   SYMMETRY_DOCS,
+  defaultLayer,
   paramApplies,
   rangeFor,
   type Generator,
@@ -115,7 +116,7 @@ function PenPicker({
                 className="peer sr-only"
               />
               <span
-                className="block size-6 border border-border peer-checked:ring-2 peer-checked:ring-fg peer-checked:ring-offset-2 peer-checked:ring-offset-bg peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-accent"
+                className="block size-6 border border-muted/50 peer-checked:ring-2 peer-checked:ring-fg peer-checked:ring-offset-2 peer-checked:ring-offset-bg peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-accent"
                 style={
                   option < 0
                     ? {
@@ -155,6 +156,11 @@ export function Controls({ program, layerIndex, onLayerIndex, onChange }: Contro
   const set = <K extends keyof Layer>(key: K, value: Layer[K]) =>
     setLayer({ ...layer, [key]: value });
 
+  /** A new layer starts as one outlined hexagon in the first palette colour, which always exists. */
+  const add = () => {
+    onChange({ ...program, layers: [...program.layers, defaultLayer({ stroke: 0 })] });
+    onLayerIndex(program.layers.length);
+  };
   const duplicate = () => {
     const layers = [...program.layers];
     layers.splice(index + 1, 0, { ...layer });
@@ -187,6 +193,14 @@ export function Controls({ program, layerIndex, onLayerIndex, onChange }: Contro
           ))}
         </div>
         <div className="ml-auto flex gap-1.5">
+          <button
+            type="button"
+            onClick={add}
+            disabled={program.layers.length >= LIMITS.maxLayers}
+            className="border border-border px-2.5 py-1.5 text-[13px] hover:border-muted disabled:opacity-40"
+          >
+            Add layer
+          </button>
           <button
             type="button"
             onClick={duplicate}

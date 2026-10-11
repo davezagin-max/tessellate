@@ -34,6 +34,7 @@ export function ProgramPanel({ program, scene, errors, warnings, onChange }: Pro
           <label className="flex flex-col items-center gap-1 text-[11px] text-muted">
             <input
               type="color"
+              aria-label="Paper colour"
               value={program.background}
               onChange={(event) => onChange({ ...program, background: event.target.value })}
               className="size-9 cursor-pointer border border-border bg-bg p-0.5"
@@ -44,6 +45,7 @@ export function ProgramPanel({ program, scene, errors, warnings, onChange }: Pro
             <label key={index} className="flex flex-col items-center gap-1 text-[11px] text-muted">
               <input
                 type="color"
+                aria-label={`Colour ${index + 1}`}
                 value={color}
                 onChange={(event) => setColor(index, event.target.value)}
                 className="size-9 cursor-pointer border border-border bg-bg p-0.5"
