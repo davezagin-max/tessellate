@@ -1,0 +1,260 @@
+{
+  "leaded-glass-medium-generate": {
+    "label": "leaded-glass-medium-generate",
+    "placeholder": true,
+    "recordedAt": null,
+    "model": "claude-opus-5-5",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "costUsd": 0,
+    "data": {
+      "program": {
+        "title": "Leaded Glass",
+        "seed": 21,
+        "background": "#ffffff",
+        "palette": [
+          "#141414",
+          "#d9381e",
+          "#ffffff"
+        ],
+        "layers": [
+          {
+            "generator": "voronoi",
+            "symmetry": "none",
+            "x": 0,
+            "y": 0,
+            "size": 1,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.5,
+            "cellAspect": 1,
+            "sides": 6,
+            "inset": 0,
+            "depth": 3,
+            "count": 40,
+            "jitter": 1,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 5,
+            "fill": 2,
+            "altFill": 1,
+            "opacity": 1
+          }
+        ]
+      },
+      "corrected": false,
+      "warnings": []
+    }
+  },
+  "penrose-sun-medium-generate": {
+    "label": "penrose-sun-medium-generate",
+    "placeholder": true,
+    "recordedAt": null,
+    "model": "claude-opus-5-5",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "costUsd": 0,
+    "data": {
+      "program": {
+        "title": "Penrose Sun",
+        "seed": 5,
+        "background": "#ffffff",
+        "palette": [
+          "#141414",
+          "#d9381e"
+        ],
+        "layers": [
+          {
+            "generator": "penrose",
+            "symmetry": "none",
+            "x": 0,
+            "y": 0,
+            "size": 0.85,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.5,
+            "cellAspect": 1,
+            "sides": 6,
+            "inset": 0,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 3,
+            "fill": 1,
+            "altFill": -1,
+            "opacity": 1
+          }
+        ]
+      },
+      "corrected": false,
+      "warnings": []
+    }
+  },
+  "star-and-cross-high-generate": {
+    "label": "star-and-cross-high-generate",
+    "placeholder": true,
+    "recordedAt": null,
+    "model": "claude-opus-5-5",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "costUsd": 0,
+    "data": {
+      "program": {
+        "title": "Star and Cross",
+        "seed": 8,
+        "background": "#ffffff",
+        "palette": [
+          "#141414",
+          "#d9381e"
+        ],
+        "layers": [
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0,
+            "y": 0,
+            "size": 0.4,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 8,
+            "inset": 0.38,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 2.5,
+            "fill": -1,
+            "altFill": -1,
+            "opacity": 1
+          },
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0,
+            "y": 0,
+            "size": 0.18,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 8,
+            "inset": 0.38,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 1.5,
+            "fill": 1,
+            "altFill": -1,
+            "opacity": 1
+          }
+        ]
+      },
+      "corrected": false,
+      "warnings": []
+    }
+  },
+  "star-and-cross-low-generate": {
+    "label": "star-and-cross-low-generate",
+    "placeholder": true,
+    "recordedAt": null,
+    "model": "claude-opus-5-5",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "costUsd": 0,
+    "data": {
+      "program": {
+        "title": "Star Tiling",
+        "seed": 8,
+        "background": "#ffffff",
+        "palette": [
+          "#141414",
+          "#d9381e"
+        ],
+        "layers": [
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0,
+            "y": 0,
+            "size": 0.5,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 8,
+            "inset": 0.3,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 2.5,
+            "fill": 1,
+            "altFill": -1,
+            "opacity": 1
+          }
+        ]
+      },
+      "corrected": false,
+      "warnings": []
+    }
+  }
+}

@@ -113,6 +113,20 @@ export class MissingKeyError extends Error {
   }
 }
 
+/**
+ * Thrown by a route when the model answered but the answer cannot be used
+ * (for example a generated program that still fails validation after one
+ * correction). The message is written for the visitor and contains no secrets.
+ */
+export class PipelineError extends Error {
+  readonly status: number;
+  constructor(message: string, status = 502) {
+    super(message);
+    this.name = "PipelineError";
+    this.status = status;
+  }
+}
+
 const KEY_PATTERN = /^sk-ant-[A-Za-z0-9_-]{16,}$/;
 
 /**
@@ -356,6 +370,7 @@ export interface ApiError {
 /** Maps SDK errors to a safe client-facing error. Never includes the key or request body. */
 export function toApiError(error: unknown): ApiError {
   if (error instanceof MissingKeyError) return { status: 401, message: error.message };
+  if (error instanceof PipelineError) return { status: error.status, message: error.message };
   if (error instanceof Anthropic.AuthenticationError) {
     return { status: 401, message: "Anthropic rejected that API key." };
   }

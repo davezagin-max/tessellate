@@ -1,3 +1,5 @@
+import critique from "@/fixtures/critique.json";
+import generate from "@/fixtures/generate.json";
 import { DemoBanner } from "@/components/kit/DemoBanner";
 import { ThemeToggle } from "@/components/kit/ThemeToggle";
 import { Logo } from "@/components/Logo";
@@ -5,10 +7,18 @@ import { Studio } from "@/components/Studio";
 
 const REPO_URL = "https://github.com/davezagin-max/tessellate";
 
+/**
+ * True while any session fixture is a hand-written sample. Once `pnpm record`
+ * has replaced them all, the banner switches to the recorded-run wording.
+ */
+const SAMPLE_DATA = [...Object.values(generate), ...Object.values(critique)].some(
+  (fixture) => fixture.placeholder,
+);
+
 export default function Home() {
   return (
     <>
-      <DemoBanner placeholder />
+      <DemoBanner placeholder={SAMPLE_DATA} />
       <header className="mx-auto flex w-full max-w-[78rem] items-center justify-between gap-4 px-4 py-4 lg:px-8">
         <div className="flex min-w-0 items-center gap-2.5">
           <Logo className="size-6 shrink-0" />

@@ -23,6 +23,20 @@ export function renderPngDataUrl(scene: Scene, pixels: number = REVIEW_PIXELS): 
   return rasterize(scene, pixels).toDataURL("image/png");
 }
 
+/**
+ * The PNG Claude reviews: 1024 pixels wide, stepping down if an unusually
+ * dense artwork would not fit in the request. Typical renders are 0.3 to
+ * 0.7 MB; the cap is about 1.9 MB.
+ */
+export function renderForReview(scene: Scene, maxChars: number): string {
+  let image = "";
+  for (const pixels of [REVIEW_PIXELS, 768, 512]) {
+    image = renderPngDataUrl(scene, pixels);
+    if (image.length <= maxChars) break;
+  }
+  return image;
+}
+
 function save(blob: Blob, filename: string): void {
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");

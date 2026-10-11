@@ -1,0 +1,1136 @@
+{
+  "leaded-glass-medium-critique-1": {
+    "label": "leaded-glass-medium-critique-1",
+    "placeholder": true,
+    "recordedAt": null,
+    "model": "claude-opus-5-5",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "costUsd": 0,
+    "data": {
+      "matches": [
+        "Irregular panes fill the canvas edge to edge.",
+        "Most panes are white with a scattering in vermilion."
+      ],
+      "gaps": [
+        "Pane sizes vary a lot: slivers sit next to panes several times their size, and the request asks for evenly sized panes.",
+        "The lead is a uniform drawn outline; the request describes dark gaps between separate panes."
+      ],
+      "score": 5,
+      "done": false,
+      "revisedProgram": {
+        "title": "Leaded Glass",
+        "seed": 21,
+        "background": "#141414",
+        "palette": [
+          "#141414",
+          "#d9381e",
+          "#ffffff"
+        ],
+        "layers": [
+          {
+            "generator": "voronoi",
+            "symmetry": "none",
+            "x": 0,
+            "y": 0,
+            "size": 0.92,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.5,
+            "cellAspect": 1,
+            "sides": 6,
+            "inset": 0.09,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.25,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": -1,
+            "strokeWidth": 2,
+            "fill": 2,
+            "altFill": 1,
+            "opacity": 1
+          }
+        ]
+      },
+      "corrected": false,
+      "warnings": []
+    }
+  },
+  "leaded-glass-medium-critique-2": {
+    "label": "leaded-glass-medium-critique-2",
+    "placeholder": true,
+    "recordedAt": null,
+    "model": "claude-opus-5-5",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "costUsd": 0,
+    "data": {
+      "matches": [
+        "The panes are now close to the same size.",
+        "Each pane is a separate piece with a dark gap around it.",
+        "White panes with a scattering of vermilion."
+      ],
+      "gaps": [
+        "A wide black border surrounds the panes; a window would run to the frame.",
+        "The panes are large, so it reads as crazy paving more than a leaded window. More, smaller panes would fix that."
+      ],
+      "score": 7,
+      "done": false,
+      "revisedProgram": {
+        "title": "Leaded Glass",
+        "seed": 21,
+        "background": "#141414",
+        "palette": [
+          "#141414",
+          "#d9381e",
+          "#ffffff"
+        ],
+        "layers": [
+          {
+            "generator": "voronoi",
+            "symmetry": "none",
+            "x": 0,
+            "y": 0,
+            "size": 1.02,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.5,
+            "cellAspect": 1,
+            "sides": 6,
+            "inset": 0.09,
+            "depth": 3,
+            "count": 90,
+            "jitter": 0.25,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": -1,
+            "strokeWidth": 2,
+            "fill": 2,
+            "altFill": 1,
+            "opacity": 1
+          }
+        ]
+      },
+      "corrected": false,
+      "warnings": []
+    }
+  },
+  "leaded-glass-medium-critique-3": {
+    "label": "leaded-glass-medium-critique-3",
+    "placeholder": true,
+    "recordedAt": null,
+    "model": "claude-opus-5-5",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "costUsd": 0,
+    "data": {
+      "matches": [
+        "Evenly sized irregular panes run right to the edge of the canvas.",
+        "Dark gaps separate every pane, like lead came.",
+        "Most panes are white, with vermilion ones scattered through."
+      ],
+      "gaps": [],
+      "score": 9,
+      "done": true,
+      "revisedProgram": {
+        "title": "Leaded Glass",
+        "seed": 21,
+        "background": "#141414",
+        "palette": [
+          "#141414",
+          "#d9381e",
+          "#ffffff"
+        ],
+        "layers": [
+          {
+            "generator": "voronoi",
+            "symmetry": "none",
+            "x": 0,
+            "y": 0,
+            "size": 1.02,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.5,
+            "cellAspect": 1,
+            "sides": 6,
+            "inset": 0.09,
+            "depth": 3,
+            "count": 90,
+            "jitter": 0.25,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": -1,
+            "strokeWidth": 2,
+            "fill": 2,
+            "altFill": 1,
+            "opacity": 1
+          }
+        ]
+      },
+      "corrected": false,
+      "warnings": []
+    }
+  },
+  "penrose-sun-medium-critique-1": {
+    "label": "penrose-sun-medium-critique-1",
+    "placeholder": true,
+    "recordedAt": null,
+    "model": "claude-opus-5-5",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "costUsd": 0,
+    "data": {
+      "matches": [
+        "It is a Penrose rhomb tiling with a clear five-fold centre.",
+        "Outlines are black ink on white."
+      ],
+      "gaps": [
+        "The patch is a decagon floating in white margins, not a full-bleed tiling.",
+        "The wrong tiles are coloured: the thick rhombs are vermilion and the thin ones are white.",
+        "The tiles are large and few, so the radiating structure barely shows."
+      ],
+      "score": 4,
+      "done": false,
+      "revisedProgram": {
+        "title": "Penrose Sun",
+        "seed": 5,
+        "background": "#ffffff",
+        "palette": [
+          "#141414",
+          "#d9381e"
+        ],
+        "layers": [
+          {
+            "generator": "penrose",
+            "symmetry": "none",
+            "x": 0,
+            "y": 0,
+            "size": 1.5,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.5,
+            "cellAspect": 1,
+            "sides": 6,
+            "inset": 0,
+            "depth": 4,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 3,
+            "fill": -1,
+            "altFill": 1,
+            "opacity": 1
+          }
+        ]
+      },
+      "corrected": false,
+      "warnings": []
+    }
+  },
+  "penrose-sun-medium-critique-2": {
+    "label": "penrose-sun-medium-critique-2",
+    "placeholder": true,
+    "recordedAt": null,
+    "model": "claude-opus-5-5",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "costUsd": 0,
+    "data": {
+      "matches": [
+        "The tiling now runs off every edge of the canvas.",
+        "The thin rhombs are vermilion and the thick ones are left white.",
+        "The five-fold centre is in the middle of the canvas."
+      ],
+      "gaps": [
+        "The outlines are heavy for 'fine ink'; at this size they thicken every vertex.",
+        "One more level of subdivision would show more rings around the centre and make it read as radiating."
+      ],
+      "score": 7,
+      "done": false,
+      "revisedProgram": {
+        "title": "Penrose Sun",
+        "seed": 5,
+        "background": "#ffffff",
+        "palette": [
+          "#141414",
+          "#d9381e",
+          "#ffffff"
+        ],
+        "layers": [
+          {
+            "generator": "penrose",
+            "symmetry": "none",
+            "x": 0,
+            "y": 0,
+            "size": 1.5,
+            "rotation": 18,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.5,
+            "cellAspect": 1,
+            "sides": 6,
+            "inset": 0,
+            "depth": 5,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 1.75,
+            "fill": -1,
+            "altFill": 1,
+            "opacity": 1
+          }
+        ]
+      },
+      "corrected": false,
+      "warnings": []
+    }
+  },
+  "penrose-sun-medium-critique-3": {
+    "label": "penrose-sun-medium-critique-3",
+    "placeholder": true,
+    "recordedAt": null,
+    "model": "claude-opus-5-5",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "costUsd": 0,
+    "data": {
+      "matches": [
+        "A full-bleed Penrose rhomb tiling radiates from a five-fold centre.",
+        "Thin rhombs are vermilion and form rings and stars around the centre.",
+        "Outlines are fine and even."
+      ],
+      "gaps": [],
+      "score": 9,
+      "done": true,
+      "revisedProgram": {
+        "title": "Penrose Sun",
+        "seed": 5,
+        "background": "#ffffff",
+        "palette": [
+          "#141414",
+          "#d9381e",
+          "#ffffff"
+        ],
+        "layers": [
+          {
+            "generator": "penrose",
+            "symmetry": "none",
+            "x": 0,
+            "y": 0,
+            "size": 1.5,
+            "rotation": 18,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.5,
+            "cellAspect": 1,
+            "sides": 6,
+            "inset": 0,
+            "depth": 5,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 1.75,
+            "fill": -1,
+            "altFill": 1,
+            "opacity": 1
+          }
+        ]
+      },
+      "corrected": false,
+      "warnings": []
+    }
+  },
+  "star-and-cross-high-critique-1": {
+    "label": "star-and-cross-high-critique-1",
+    "placeholder": true,
+    "recordedAt": null,
+    "model": "claude-opus-5-5",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "costUsd": 0,
+    "data": {
+      "matches": [
+        "Eight-point stars repeat on a square grid in fine black lines.",
+        "Each star holds a smaller vermilion star."
+      ],
+      "gaps": [
+        "The stars float apart: neighbouring tips do not touch, so no cross shapes form between them.",
+        "The points are long and narrow, which is a spiky star rather than the shallow one a star-and-cross tiling uses.",
+        "There are no black diamonds anywhere."
+      ],
+      "score": 4,
+      "done": false,
+      "revisedProgram": {
+        "title": "Star and Cross",
+        "seed": 8,
+        "background": "#ffffff",
+        "palette": [
+          "#141414",
+          "#d9381e",
+          "#ffffff"
+        ],
+        "layers": [
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0,
+            "y": 0,
+            "size": 0.5,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 8,
+            "inset": 0.2346,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 4,
+            "fill": -1,
+            "altFill": -1,
+            "opacity": 1
+          },
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0,
+            "y": 0,
+            "size": 0.3,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 8,
+            "inset": 0.2346,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 1.5,
+            "fill": 1,
+            "altFill": -1,
+            "opacity": 1
+          },
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0.5,
+            "y": 0.5,
+            "size": 0.1,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 4,
+            "inset": 0,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 1.5,
+            "fill": 0,
+            "altFill": -1,
+            "opacity": 1
+          }
+        ]
+      },
+      "corrected": false,
+      "warnings": []
+    }
+  },
+  "star-and-cross-high-critique-2": {
+    "label": "star-and-cross-high-critique-2",
+    "placeholder": true,
+    "recordedAt": null,
+    "model": "claude-opus-5-5",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "costUsd": 0,
+    "data": {
+      "matches": [
+        "The stars now meet tip to tip and the gaps between them read clearly as crosses.",
+        "A black diamond sits at the centre of every cross.",
+        "Every star has a vermilion star inside it."
+      ],
+      "gaps": [
+        "The outlines are heavy for 'fine ink lines'; they compete with the vermilion.",
+        "The inner star's points line up with the outer star's, so it reads as a thick red lining instead of a separate star set inside."
+      ],
+      "score": 7,
+      "done": false,
+      "revisedProgram": {
+        "title": "Star and Cross",
+        "seed": 8,
+        "background": "#ffffff",
+        "palette": [
+          "#141414",
+          "#d9381e",
+          "#ffffff"
+        ],
+        "layers": [
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0,
+            "y": 0,
+            "size": 0.5,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 8,
+            "inset": 0.2346,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 2.5,
+            "fill": -1,
+            "altFill": -1,
+            "opacity": 1
+          },
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0,
+            "y": 0,
+            "size": 0.27,
+            "rotation": 22.5,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 8,
+            "inset": 0.2346,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 1.5,
+            "fill": 1,
+            "altFill": -1,
+            "opacity": 1
+          },
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0.5,
+            "y": 0.5,
+            "size": 0.1,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 4,
+            "inset": 0,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 1.5,
+            "fill": 0,
+            "altFill": -1,
+            "opacity": 1
+          }
+        ]
+      },
+      "corrected": false,
+      "warnings": []
+    }
+  },
+  "star-and-cross-high-critique-3": {
+    "label": "star-and-cross-high-critique-3",
+    "placeholder": true,
+    "recordedAt": null,
+    "model": "claude-opus-5-5",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "costUsd": 0,
+    "data": {
+      "matches": [
+        "Eight-point stars in fine ink lines meet tip to tip across the whole canvas.",
+        "The small vermilion star is turned between the outer points, so it reads as its own star.",
+        "Black diamonds mark the centre of every cross.",
+        "Five whole stars fit across, so nothing is cut off mid-star at the edges."
+      ],
+      "gaps": [],
+      "score": 9,
+      "done": true,
+      "revisedProgram": {
+        "title": "Star and Cross",
+        "seed": 8,
+        "background": "#ffffff",
+        "palette": [
+          "#141414",
+          "#d9381e",
+          "#ffffff"
+        ],
+        "layers": [
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0,
+            "y": 0,
+            "size": 0.5,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 8,
+            "inset": 0.2346,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 2.5,
+            "fill": -1,
+            "altFill": -1,
+            "opacity": 1
+          },
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0,
+            "y": 0,
+            "size": 0.27,
+            "rotation": 22.5,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 8,
+            "inset": 0.2346,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 1.5,
+            "fill": 1,
+            "altFill": -1,
+            "opacity": 1
+          },
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0.5,
+            "y": 0.5,
+            "size": 0.1,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 4,
+            "inset": 0,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 1.5,
+            "fill": 0,
+            "altFill": -1,
+            "opacity": 1
+          }
+        ]
+      },
+      "corrected": false,
+      "warnings": []
+    }
+  },
+  "star-and-cross-low-critique-1": {
+    "label": "star-and-cross-low-critique-1",
+    "placeholder": true,
+    "recordedAt": null,
+    "model": "claude-opus-5-5",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "costUsd": 0,
+    "data": {
+      "matches": [
+        "Eight-point stars tile a square grid and touch at their tips.",
+        "Black outlines on white, with vermilion."
+      ],
+      "gaps": [
+        "The whole star is filled vermilion; the request asks for a small vermilion star inside an outlined one.",
+        "The points are a little too deep, which pinches the crosses between the stars.",
+        "There are no black diamonds in the crosses."
+      ],
+      "score": 4,
+      "done": false,
+      "revisedProgram": {
+        "title": "Star Tiling",
+        "seed": 8,
+        "background": "#ffffff",
+        "palette": [
+          "#141414",
+          "#d9381e"
+        ],
+        "layers": [
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0,
+            "y": 0,
+            "size": 0.5,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 8,
+            "inset": 0.2346,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 2.5,
+            "fill": -1,
+            "altFill": -1,
+            "opacity": 1
+          },
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0,
+            "y": 0,
+            "size": 0.3,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 8,
+            "inset": 0.2346,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 1.5,
+            "fill": 1,
+            "altFill": -1,
+            "opacity": 1
+          }
+        ]
+      },
+      "corrected": false,
+      "warnings": []
+    }
+  },
+  "star-and-cross-low-critique-2": {
+    "label": "star-and-cross-low-critique-2",
+    "placeholder": true,
+    "recordedAt": null,
+    "model": "claude-opus-5-5",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "costUsd": 0,
+    "data": {
+      "matches": [
+        "Outlined stars meet tip to tip and the crosses between them are clear.",
+        "Each star now has a vermilion star inside it."
+      ],
+      "gaps": [
+        "The crosses are empty: there are still no black diamonds.",
+        "The inner star is large and aligned with the outer one, so it looks like a thick lining."
+      ],
+      "score": 6,
+      "done": false,
+      "revisedProgram": {
+        "title": "Star Tiling",
+        "seed": 8,
+        "background": "#ffffff",
+        "palette": [
+          "#141414",
+          "#d9381e"
+        ],
+        "layers": [
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0,
+            "y": 0,
+            "size": 0.5,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 8,
+            "inset": 0.2346,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 2.5,
+            "fill": -1,
+            "altFill": -1,
+            "opacity": 1
+          },
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0,
+            "y": 0,
+            "size": 0.3,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 8,
+            "inset": 0.2346,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 1.5,
+            "fill": 1,
+            "altFill": -1,
+            "opacity": 1
+          },
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0.5,
+            "y": 0.5,
+            "size": 0.2,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 4,
+            "inset": 0,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 1.5,
+            "fill": 0,
+            "altFill": -1,
+            "opacity": 1
+          }
+        ]
+      },
+      "corrected": false,
+      "warnings": []
+    }
+  },
+  "star-and-cross-low-critique-3": {
+    "label": "star-and-cross-low-critique-3",
+    "placeholder": true,
+    "recordedAt": null,
+    "model": "claude-opus-5-5",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0
+    },
+    "costUsd": 0,
+    "data": {
+      "matches": [
+        "Stars meet tip to tip with clear crosses between them.",
+        "Black diamonds now sit at the centre of every cross.",
+        "Each star has a vermilion star inside."
+      ],
+      "gaps": [
+        "The diamonds are too large and crowd the arms of the crosses.",
+        "The inner star still lines up with the outer points instead of sitting between them."
+      ],
+      "score": 7,
+      "done": false,
+      "revisedProgram": {
+        "title": "Star and Cross",
+        "seed": 8,
+        "background": "#ffffff",
+        "palette": [
+          "#141414",
+          "#d9381e",
+          "#ffffff"
+        ],
+        "layers": [
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0,
+            "y": 0,
+            "size": 0.5,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 8,
+            "inset": 0.2346,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 2.5,
+            "fill": -1,
+            "altFill": -1,
+            "opacity": 1
+          },
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0,
+            "y": 0,
+            "size": 0.27,
+            "rotation": 22.5,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 8,
+            "inset": 0.2346,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 1.5,
+            "fill": 1,
+            "altFill": -1,
+            "opacity": 1
+          },
+          {
+            "generator": "polygon",
+            "symmetry": "p4m",
+            "x": 0.5,
+            "y": 0.5,
+            "size": 0.1,
+            "rotation": 0,
+            "repeat": 1,
+            "scaleStep": 1,
+            "rotateStep": 0,
+            "spiral": false,
+            "order": 6,
+            "mirror": false,
+            "cell": 0.4,
+            "cellAspect": 1,
+            "sides": 4,
+            "inset": 0,
+            "depth": 3,
+            "count": 40,
+            "jitter": 0.5,
+            "angle": 60,
+            "axiom": "",
+            "rules": "",
+            "stroke": 0,
+            "strokeWidth": 1.5,
+            "fill": 0,
+            "altFill": -1,
+            "opacity": 1
+          }
+        ]
+      },
+      "corrected": false,
+      "warnings": []
+    }
+  }
+}

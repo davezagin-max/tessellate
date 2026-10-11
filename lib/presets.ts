@@ -34,7 +34,7 @@ export const PRESETS: Preset[] = [
     id: "star-and-cross",
     title: "Star and Cross",
     prompt:
-      "An Islamic star-and-cross tiling: eight-point stars in fine ink lines that meet tip to tip, with a small vermilion star set inside each one.",
+      "An Islamic star-and-cross tiling: eight-point stars in fine ink lines that meet tip to tip, a small vermilion star set inside each one, and a black diamond at the centre of every cross.",
     note: "p4m · three polygon layers",
     session: true,
     program: {

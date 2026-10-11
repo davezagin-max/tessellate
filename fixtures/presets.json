@@ -1,1 +1,158 @@
-[]
+[
+  {
+    "route": "/api/generate",
+    "session": "star-and-cross-high",
+    "body": {
+      "demoId": "star-and-cross-high-generate",
+      "prompt": "An Islamic star-and-cross tiling: eight-point stars in fine ink lines that meet tip to tip, a small vermilion star set inside each one, and a black diamond at the centre of every cross.",
+      "effort": "high"
+    }
+  },
+  {
+    "route": "/api/critique",
+    "session": "star-and-cross-high",
+    "body": {
+      "demoId": "star-and-cross-high-critique-1",
+      "prompt": "An Islamic star-and-cross tiling: eight-point stars in fine ink lines that meet tip to tip, a small vermilion star set inside each one, and a black diamond at the centre of every cross.",
+      "iteration": 1,
+      "effort": "high"
+    }
+  },
+  {
+    "route": "/api/critique",
+    "session": "star-and-cross-high",
+    "body": {
+      "demoId": "star-and-cross-high-critique-2",
+      "prompt": "An Islamic star-and-cross tiling: eight-point stars in fine ink lines that meet tip to tip, a small vermilion star set inside each one, and a black diamond at the centre of every cross.",
+      "iteration": 2,
+      "effort": "high"
+    }
+  },
+  {
+    "route": "/api/critique",
+    "session": "star-and-cross-high",
+    "body": {
+      "demoId": "star-and-cross-high-critique-3",
+      "prompt": "An Islamic star-and-cross tiling: eight-point stars in fine ink lines that meet tip to tip, a small vermilion star set inside each one, and a black diamond at the centre of every cross.",
+      "iteration": 3,
+      "effort": "high"
+    }
+  },
+  {
+    "route": "/api/generate",
+    "session": "star-and-cross-low",
+    "body": {
+      "demoId": "star-and-cross-low-generate",
+      "prompt": "An Islamic star-and-cross tiling: eight-point stars in fine ink lines that meet tip to tip, a small vermilion star set inside each one, and a black diamond at the centre of every cross.",
+      "effort": "low"
+    }
+  },
+  {
+    "route": "/api/critique",
+    "session": "star-and-cross-low",
+    "body": {
+      "demoId": "star-and-cross-low-critique-1",
+      "prompt": "An Islamic star-and-cross tiling: eight-point stars in fine ink lines that meet tip to tip, a small vermilion star set inside each one, and a black diamond at the centre of every cross.",
+      "iteration": 1,
+      "effort": "low"
+    }
+  },
+  {
+    "route": "/api/critique",
+    "session": "star-and-cross-low",
+    "body": {
+      "demoId": "star-and-cross-low-critique-2",
+      "prompt": "An Islamic star-and-cross tiling: eight-point stars in fine ink lines that meet tip to tip, a small vermilion star set inside each one, and a black diamond at the centre of every cross.",
+      "iteration": 2,
+      "effort": "low"
+    }
+  },
+  {
+    "route": "/api/critique",
+    "session": "star-and-cross-low",
+    "body": {
+      "demoId": "star-and-cross-low-critique-3",
+      "prompt": "An Islamic star-and-cross tiling: eight-point stars in fine ink lines that meet tip to tip, a small vermilion star set inside each one, and a black diamond at the centre of every cross.",
+      "iteration": 3,
+      "effort": "low"
+    }
+  },
+  {
+    "route": "/api/generate",
+    "session": "penrose-sun-medium",
+    "body": {
+      "demoId": "penrose-sun-medium-generate",
+      "prompt": "A Penrose rhomb tiling radiating from a five-fold centre, full bleed, with the thin rhombs in vermilion and fine ink outlines.",
+      "effort": "medium"
+    }
+  },
+  {
+    "route": "/api/critique",
+    "session": "penrose-sun-medium",
+    "body": {
+      "demoId": "penrose-sun-medium-critique-1",
+      "prompt": "A Penrose rhomb tiling radiating from a five-fold centre, full bleed, with the thin rhombs in vermilion and fine ink outlines.",
+      "iteration": 1,
+      "effort": "medium"
+    }
+  },
+  {
+    "route": "/api/critique",
+    "session": "penrose-sun-medium",
+    "body": {
+      "demoId": "penrose-sun-medium-critique-2",
+      "prompt": "A Penrose rhomb tiling radiating from a five-fold centre, full bleed, with the thin rhombs in vermilion and fine ink outlines.",
+      "iteration": 2,
+      "effort": "medium"
+    }
+  },
+  {
+    "route": "/api/critique",
+    "session": "penrose-sun-medium",
+    "body": {
+      "demoId": "penrose-sun-medium-critique-3",
+      "prompt": "A Penrose rhomb tiling radiating from a five-fold centre, full bleed, with the thin rhombs in vermilion and fine ink outlines.",
+      "iteration": 3,
+      "effort": "medium"
+    }
+  },
+  {
+    "route": "/api/generate",
+    "session": "leaded-glass-medium",
+    "body": {
+      "demoId": "leaded-glass-medium-generate",
+      "prompt": "A leaded-glass window: evenly sized irregular panes with dark gaps between them, most panes white and a scattering in vermilion.",
+      "effort": "medium"
+    }
+  },
+  {
+    "route": "/api/critique",
+    "session": "leaded-glass-medium",
+    "body": {
+      "demoId": "leaded-glass-medium-critique-1",
+      "prompt": "A leaded-glass window: evenly sized irregular panes with dark gaps between them, most panes white and a scattering in vermilion.",
+      "iteration": 1,
+      "effort": "medium"
+    }
+  },
+  {
+    "route": "/api/critique",
+    "session": "leaded-glass-medium",
+    "body": {
+      "demoId": "leaded-glass-medium-critique-2",
+      "prompt": "A leaded-glass window: evenly sized irregular panes with dark gaps between them, most panes white and a scattering in vermilion.",
+      "iteration": 2,
+      "effort": "medium"
+    }
+  },
+  {
+    "route": "/api/critique",
+    "session": "leaded-glass-medium",
+    "body": {
+      "demoId": "leaded-glass-medium-critique-3",
+      "prompt": "A leaded-glass window: evenly sized irregular panes with dark gaps between them, most panes white and a scattering in vermilion.",
+      "iteration": 3,
+      "effort": "medium"
+    }
+  }
+]

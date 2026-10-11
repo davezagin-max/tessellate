@@ -22,7 +22,7 @@ const GROUPS: { id: ParamSpec["group"]; title: string }[] = [
   { id: "shape", title: "Shape" },
   { id: "placement", title: "Placement" },
   { id: "repeat", title: "Nested copies" },
-  { id: "symmetry", title: "Symmetry" },
+  { id: "symmetry", title: "Lattice and order" },
   { id: "style", title: "Style" },
 ];
 
