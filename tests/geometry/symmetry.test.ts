@@ -5,6 +5,7 @@ import {
   GROUP_SPECS,
   classifyOp,
   composeOps,
+  coveringCountBound,
   coveringTranslations,
   groupOps,
   latticeFor,
@@ -239,6 +240,25 @@ describe("coveringTranslations", () => {
         actual.push(`${got[k].toFixed(6)},${got[k + 1].toFixed(6)}`);
       expect(actual.sort()).toEqual(expected.sort());
       expect(actual.length).toBeGreaterThan(4);
+    }
+  });
+
+  it("has a no-enumeration bound that is never below the true count", () => {
+    // The validator uses the bound to reject absurdly dense lattices without listing them.
+    let seed = 12345;
+    const next = () => {
+      seed = (Math.imul(seed, 1103515245) + 12345) >>> 0;
+      return seed / 4294967296;
+    };
+    for (let trial = 0; trial < 300; trial++) {
+      const kind = (["square", "hexagonal", "rectangular"] as const)[trial % 3];
+      const lattice = latticeFor(kind, 0.08 + next() * 1.9, 0.4 + next() * 2.1);
+      const cx = (next() - 0.5) * 4;
+      const cy = (next() - 0.5) * 4;
+      const r = next() * 3;
+      const box: Box = { minX: cx - r, minY: cy - r, maxX: cx + r, maxY: cy + r };
+      const exact = coveringTranslations(lattice, box).length / 2;
+      expect(coveringCountBound(lattice, box)).toBeGreaterThanOrEqual(exact);
     }
   });
 });

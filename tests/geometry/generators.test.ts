@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   countDraws,
+  countStrokes,
   expandLSystem,
   fitToUnit,
   lsystem,
@@ -134,6 +135,24 @@ describe("L-systems", () => {
     expect(traceTurtle("FfF", 90)).toHaveLength(2);
     // An unmatched pop is ignored rather than crashing.
     expect(traceTurtle("F]F", 90)).toHaveLength(1);
+  });
+
+  it("counts strokes and points without tracing, exactly as the turtle draws them", () => {
+    // The validator's size check relies on these counts, so they must match the real trace.
+    const grammars: [axiom: string, source: string, depth: number][] = [
+      ["F--F--F", "F=F+F--F+F", 3],
+      ["X", "X=F+[[X]-X]-F[-FX]+X;F=FF", 4],
+      ["FX", "X=X+YF+;Y=-FX-Y", 7],
+      ["F", "F=FfF[+F]f", 3],
+      ["F]F[f]F", "", 0],
+    ];
+    for (const [axiom, source, depth] of grammars) {
+      const expanded = expandLSystem(axiom, rules(source), depth) as string;
+      const lines = traceTurtle(expanded, 25);
+      expect(countStrokes(expanded)).toBe(lines.length);
+      const points = lines.reduce((sum, line) => sum + line.length / 2, 0);
+      expect(countDraws(expanded) + countStrokes(expanded)).toBe(points);
+    }
   });
 
   it("fits any drawing into the unit square", () => {

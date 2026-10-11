@@ -177,6 +177,38 @@ describe("symmetry in the finished artwork", () => {
   });
 });
 
+describe("duplicate detection key", () => {
+  const square = [0.1, 0.1, 0.3, 0.1, 0.3, 0.3, 0.1, 0.3];
+
+  it("ignores which vertex a closed path starts from", () => {
+    const rotated = [...square.slice(4), ...square.slice(0, 4)];
+    expect(pathKey(rotated, true, 0)).toBe(pathKey(square, true, 0));
+  });
+
+  it("ignores the direction of an open path", () => {
+    const line = [0, 0, 0.2, 0.1, 0.5, -0.3];
+    const backwards = [0.5, -0.3, 0.2, 0.1, 0, 0];
+    expect(pathKey(backwards, false, 0)).toBe(pathKey(line, false, 0));
+  });
+
+  it("absorbs floating-point noise but not a real difference", () => {
+    const noisy = square.map((v, i) => v + (i % 2 ? 1e-9 : -1e-9));
+    expect(pathKey(noisy, true, 0)).toBe(pathKey(square, true, 0));
+    const moved = square.map((v) => v + 0.001);
+    expect(pathKey(moved, true, 0)).not.toBe(pathKey(square, true, 0));
+  });
+
+  it("keeps apart paths that differ in tag, closure, or vertex count", () => {
+    const keys = new Set([
+      pathKey(square, true, 0),
+      pathKey(square, true, 1),
+      pathKey(square, false, 0),
+      pathKey(square.slice(0, 6), true, 0),
+    ]);
+    expect(keys.size).toBe(4);
+  });
+});
+
 describe("placement", () => {
   it("nests copies in place by default and along a spiral when asked", () => {
     const base = { x: 0.5, y: 0, size: 0.1, rotation: 0, scaleStep: 0.5, rotateStep: 90 };
