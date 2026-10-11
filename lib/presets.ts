@@ -20,7 +20,7 @@ export interface Preset {
 }
 
 const INK = "#141414";
-const VERMILION = "#e2401c";
+const VERMILION = "#d9381e";
 const WHITE = "#ffffff";
 
 /** Scale between nested regular n-gons so each copy's corners touch the previous copy's sides. */
@@ -45,7 +45,7 @@ export const PRESETS: Preset[] = [
       layers: [
         layer({
           symmetry: "p4m",
-          cell: 0.5,
+          cell: 0.4,
           sides: 8,
           inset: 0.2346,
           size: 0.5,
@@ -54,7 +54,7 @@ export const PRESETS: Preset[] = [
         }),
         layer({
           symmetry: "p4m",
-          cell: 0.5,
+          cell: 0.4,
           sides: 8,
           inset: 0.2346,
           size: 0.27,
@@ -65,7 +65,7 @@ export const PRESETS: Preset[] = [
         }),
         layer({
           symmetry: "p4m",
-          cell: 0.5,
+          cell: 0.4,
           x: 0.5,
           y: 0.5,
           sides: 4,
@@ -310,12 +310,12 @@ export const PRESETS: Preset[] = [
   },
   {
     id: "dragon",
-    title: "Heighway Dragon",
+    title: "Dragon Curve",
     prompt: "A Heighway dragon curve drawn as one unbroken white line on black.",
     note: "L-system · 4,096 segments",
     session: false,
     program: {
-      title: "Heighway Dragon",
+      title: "Dragon Curve",
       seed: 12,
       background: INK,
       palette: [WHITE, VERMILION],

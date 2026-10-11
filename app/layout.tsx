@@ -8,8 +8,9 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Starter",
-  description: "Portfolio project starter.",
+  title: "Tessellate: AI geometric art studio",
+  description:
+    "Describe a pattern in words. Claude Opus 5.5 writes it in a small geometry language, looks at the render, and refines it until it matches.",
 };
 
 export const viewport: Viewport = {

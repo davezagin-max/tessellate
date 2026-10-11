@@ -40,6 +40,16 @@ describe("chainSegments", () => {
     expect(lines[0].slice(0, 2)).toEqual(lines[0].slice(8, 10));
   });
 
+  it("keeps a self-touching curve as one stroke", () => {
+    // A figure of eight through (10, 10): four segments meet there.
+    const eight = [
+      0, 0, 10, 10, 10, 10, 20, 20, 20, 20, 20, 0, 20, 0, 10, 10, 10, 10, 0, 20, 0, 20, 0, 0,
+    ];
+    const lines = chainSegments(eight);
+    expect(lines).toHaveLength(1);
+    expect(lines[0]).toHaveLength(14);
+  });
+
   it("keeps separate shapes separate and uses every segment once", () => {
     const lines = chainSegments([0, 0, 5, 0, 20, 20, 25, 20, 5, 0, 5, 5]);
     expect(lines).toHaveLength(2);
@@ -159,6 +169,13 @@ describe("plotter export", () => {
     const { svg, stats } = sceneToPlot(scene([{ sides: 5, size: 0.4, stroke: -1, fill: 1 }]));
     expect(stats.pens).toBe(1);
     expect(svg).toContain('stroke="#e2401c"');
+  });
+
+  it("plots the dragon curve as the single unbroken line it is", () => {
+    const { stats } = sceneToPlot(buildScene(PRESET_BY_ID["dragon"].program));
+    expect(stats.strokes).toBe(1);
+    expect(stats.segments).toBe(4096);
+    expect(stats.travelMm).toBeGreaterThan(0);
   });
 
   it("is deterministic", () => {

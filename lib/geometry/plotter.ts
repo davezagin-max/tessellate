@@ -110,24 +110,32 @@ export function chainSegments(segs: readonly number[]): number[][] {
   }
   const used = new Uint8Array(count);
 
-  /** Extends `line` from its last point for as long as an unused segment continues it. */
-  const extend = (line: number[]) => {
+  /**
+   * Extends `line` from its last point for as long as an unused segment
+   * continues it. Where several do (a vertex where lines cross), it prefers
+   * the neighbour in generation order, so a curve that touches itself, like
+   * a dragon curve, comes out as the one long stroke it was drawn as instead
+   * of being cut into loops.
+   */
+  const extend = (line: number[], from: number) => {
+    let last = from;
     for (;;) {
       const x = line[line.length - 2];
       const y = line[line.length - 1];
       const options = byPoint.get(pointKey(x, y));
+      if (!options) return;
       let next = -1;
-      if (options) {
-        while (options.length > 0) {
-          const candidate = options.pop() as number;
-          if (!used[candidate]) {
-            next = candidate;
-            break;
-          }
+      for (const candidate of options) {
+        if (used[candidate]) continue;
+        if (candidate === last + 1 || candidate === last - 1) {
+          next = candidate;
+          break;
         }
+        if (next < 0) next = candidate;
       }
       if (next < 0) return;
       used[next] = 1;
+      last = next;
       const startsHere = segs[4 * next] === x && segs[4 * next + 1] === y;
       if (startsHere) line.push(segs[4 * next + 2], segs[4 * next + 3]);
       else line.push(segs[4 * next], segs[4 * next + 1]);
@@ -139,11 +147,11 @@ export function chainSegments(segs: readonly number[]): number[][] {
     if (used[id]) continue;
     used[id] = 1;
     const line = [segs[4 * id], segs[4 * id + 1], segs[4 * id + 2], segs[4 * id + 3]];
-    extend(line);
+    extend(line, id);
     // Then grow the other end.
     const flipped: number[] = [];
     for (let i = line.length - 2; i >= 0; i -= 2) flipped.push(line[i], line[i + 1]);
-    extend(flipped);
+    extend(flipped, id);
     lines.push(flipped);
   }
   return lines;

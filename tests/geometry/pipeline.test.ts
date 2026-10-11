@@ -61,17 +61,17 @@ describe("determinism", () => {
     );
     expect(hashes).toMatchInlineSnapshot(`
       {
-        "composition": "d4e9437c",
-        "dahlia": "bb4af460",
-        "dragon": "db45c34b",
-        "fern-wreath": "c3f80bf7",
-        "flower-of-life": "ce1ff6cf",
-        "koch-field": "65f10b76",
-        "leaded-glass": "5e2ed263",
-        "penrose-sun": "7b4dae63",
+        "composition": "de684025",
+        "dahlia": "5b13827f",
+        "dragon": "45592ba2",
+        "fern-wreath": "45682c8e",
+        "flower-of-life": "e53a3975",
+        "koch-field": "d6fd1f0b",
+        "leaded-glass": "fc06ebea",
+        "penrose-sun": "b8b381ec",
         "pursuit": "dc5b394d",
-        "rose-window": "6b6f3763",
-        "star-and-cross": "dc07a0e3",
+        "rose-window": "5db2dc91",
+        "star-and-cross": "31f09ae2",
         "triangle-whirl": "0c8dc00a",
       }
     `);
