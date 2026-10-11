@@ -180,6 +180,8 @@ function StudioInner({ initialPreset, initialEffort, recording }: StudioInnerPro
       if (preset && sameProgram(last.program, preset.program)) edit(preset.program);
       else edit(last.program);
       setLayerIndex(0);
+      // A fresh live run replaced the preset on the canvas, so nothing in the gallery is selected.
+      if (demo === null) setPreset(null);
     }
   };
 

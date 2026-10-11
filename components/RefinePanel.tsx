@@ -177,7 +177,8 @@ export function RefinePanel({
               Add a key to refine this
             </button>
             <p className="text-xs leading-5 text-muted">
-              This preset has no recorded session. The three presets marked with a red dot do.
+              There is no recorded session for this one. The three presets marked with a red dot
+              have one.
             </p>
           </>
         )}
