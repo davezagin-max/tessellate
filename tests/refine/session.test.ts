@@ -315,6 +315,25 @@ describe("runSession with a scripted server", () => {
     expect(bodies).toHaveLength(1);
     expect(final.frames).toHaveLength(1);
   });
+
+  it("stops at once when aborted in the middle of a paced replay step", async () => {
+    const controller = new AbortController();
+    const { api, bodies } = scripted([generated(base), reviewed(thicker(4))]);
+    // A replay pause that would never end on its own: only Stop can finish this run.
+    const forever = new Promise<void>(() => {});
+    const running = run(api, {
+      signal: controller.signal,
+      pause: (phase: Phase) => (phase === "reviewing" ? forever : Promise.resolve()),
+      onState: (state) => {
+        if (state.phase === "reviewing") queueMicrotask(() => controller.abort());
+      },
+    });
+    const final = await running;
+    expect(final).toMatchObject({ phase: "done", outcome: "stopped" });
+    // The first draft is kept; the review was never requested.
+    expect(final.frames).toHaveLength(1);
+    expect(bodies).toHaveLength(1);
+  });
 });
 
 describe("addMeta", () => {

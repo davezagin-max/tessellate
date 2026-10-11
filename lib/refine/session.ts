@@ -126,9 +126,17 @@ export async function runSession(options: SessionOptions): Promise<SessionState>
     update({ phase: "error", error: { kind, message }, meta: addMeta(state.meta, meta) });
   const stopped = () => signal?.aborted === true;
   const stop = () => update({ phase: "done", outcome: "stopped" });
+  // Resolves when the visitor presses Stop, so a paced replay step never has to be waited out.
+  const aborted = signal
+    ? new Promise<void>((resolve) => {
+        if (signal.aborted) resolve();
+        else signal.addEventListener("abort", () => resolve(), { once: true });
+      })
+    : null;
   const step = async (phase: Phase, patch: Partial<SessionState> = {}) => {
     update({ phase, ...patch });
-    await options.pause?.(phase);
+    const pause = options.pause?.(phase);
+    if (pause) await (aborted ? Promise.race([pause, aborted]) : pause);
   };
 
   /** Validates a program from the server before anything draws it, then renders it. */
