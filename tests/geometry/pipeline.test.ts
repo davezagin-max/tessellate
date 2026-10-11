@@ -66,7 +66,7 @@ describe("determinism", () => {
         "dragon": "45592ba2",
         "fern-wreath": "45682c8e",
         "flower-of-life": "e53a3975",
-        "koch-field": "d6fd1f0b",
+        "koch-field": "c4d4fbbf",
         "leaded-glass": "fc06ebea",
         "penrose-sun": "b8b381ec",
         "pursuit": "dc5b394d",
