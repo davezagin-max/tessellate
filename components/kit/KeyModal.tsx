@@ -52,7 +52,7 @@ export function KeyModal({ open, hasKey, onClose }: KeyModalProps) {
       className="m-auto w-[min(32rem,calc(100vw-2rem))] rounded-xl border border-border bg-surface p-0 text-fg shadow-2xl backdrop:bg-black/50"
     >
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-6">
-        <h2 className="text-lg font-semibold">Add your Anthropic key</h2>
+        <h2 className="text-lg font-semibold">Add your Anthropic API key</h2>
         <p className="text-sm text-muted">
           Your key stays in this browser tab. It is sent with each request to this app&apos;s own
           API route, which calls Claude and forgets it. It is never stored or logged on the server.
@@ -88,7 +88,7 @@ export function KeyModal({ open, hasKey, onClose }: KeyModalProps) {
           Remember for this tab (sessionStorage, cleared when the tab closes)
         </label>
         <p className="text-xs text-muted">
-          No key? The demo replays recorded runs.{" "}
+          No key? The demo still works: it replays example sessions.{" "}
           <a
             href="https://platform.claude.com/settings/keys"
             target="_blank"

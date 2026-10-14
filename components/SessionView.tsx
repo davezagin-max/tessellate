@@ -37,13 +37,16 @@ function Gap() {
 function ScoreBar({ score }: { score: number }) {
   return (
     <div className="flex items-center gap-2.5">
+      <span aria-hidden className="text-xs text-muted">
+        Match
+      </span>
       <div aria-hidden className="grid flex-1 grid-cols-10 gap-0.5">
         {Array.from({ length: 10 }, (_, i) => (
           <span key={i} className={`h-1.5 ${i < score ? "bg-fg" : "bg-border"}`} />
         ))}
       </div>
       <p className="font-mono text-sm tabular-nums">
-        <span className="sr-only">Score </span>
+        <span className="sr-only">Match score </span>
         <span className="font-semibold">{score}</span>
         <span className="text-muted">/10</span>
       </p>
@@ -70,7 +73,7 @@ function FrameCard({
           onClick={() => onOpen(frame.program)}
           className="text-xs text-muted underline-offset-4 hover:text-fg hover:underline"
         >
-          Open in studio
+          Load this version
         </button>
       </div>
       <div className="border border-black/80 bg-white p-1.5 shadow-frame">
@@ -78,7 +81,7 @@ function FrameCard({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={frame.image}
-          alt={`${frameName(frame.index)}: the render Claude reviewed`}
+          alt={`${frameName(frame.index)}: the drawing under review`}
           className="block aspect-square w-full"
         />
       </div>
@@ -114,14 +117,14 @@ function FrameCard({
           )}
           {critique.done && (
             <p className="border-l-2 border-success pl-2.5 text-[13px] leading-5 text-muted">
-              Claude judged this a match and stopped.
+              Judged a match, so the loop stopped here.
             </p>
           )}
         </div>
       ) : reviewing ? (
         <p className="flex items-center gap-2 text-[13px] text-muted">
           <span aria-hidden className="size-2 animate-pulse rounded-full bg-accent" />
-          Claude is looking at this render…
+          Looking at this drawing…
         </p>
       ) : null}
 
@@ -171,9 +174,9 @@ function summary(session: SessionState): string | null {
   const reviews = session.frames.filter((f) => f.critique).length;
   switch (session.outcome) {
     case "matched":
-      return `Matched after ${reviews} ${reviews === 1 ? "review" : "reviews"}, at ${score}/10.`;
+      return `Done: it matches the request after ${reviews} ${reviews === 1 ? "round" : "rounds"} of critique (${score}/10).`;
     case "limit":
-      return `Stopped at the limit of ${MAX_REVIEWS} reviews, at ${score}/10.`;
+      return `Stopped at the limit of ${MAX_REVIEWS} rounds of critique, at ${score}/10.`;
     case "unchanged":
       return `Claude had nothing more to change, at ${score}/10.`;
     case "stopped":
@@ -197,7 +200,7 @@ export function SessionView({ session, sample, onOpen, onAddKey }: SessionViewPr
   const busy = phase === "writing" || phase === "drawing" || phase === "reviewing";
   const pending =
     phase === "writing"
-      ? "Claude is writing the first program…"
+      ? "Writing the first drawing program…"
       : phase === "drawing"
         ? frames.length === 0
           ? "Drawing the first draft…"
@@ -236,9 +239,9 @@ export function SessionView({ session, sample, onOpen, onAddKey }: SessionViewPr
           data-testid="sample-note"
           className="border-l-2 border-accent bg-bg px-3 py-2 text-[13px] leading-5 text-muted"
         >
-          <span className="font-medium text-fg">Sample session.</span> The programs and reviews
-          below were written by hand to show the loop. The renders are drawn here, live, from those
-          programs. Nothing in this session is a recorded model run.
+          <span className="font-medium text-fg">Sample replay.</span> These drafts and critiques
+          were written by hand to show how the loop works; no AI was called. The drawings are real:
+          your browser draws each one from its program.
         </p>
       )}
 
@@ -258,10 +261,10 @@ export function SessionView({ session, sample, onOpen, onAddKey }: SessionViewPr
         {busy && (
           <p className="sr-only">
             {phase === "writing"
-              ? "Claude is writing the first program."
+              ? "Writing the first drawing program."
               : phase === "drawing"
-                ? "Drawing."
-                : `Review ${session.review} of ${MAX_REVIEWS}: Claude is looking at the render.`}
+                ? "Drawing the program."
+                : `Round ${session.review} of ${MAX_REVIEWS}: looking at the drawing and critiquing it.`}
           </p>
         )}
         {phase === "done" && text && (

@@ -8,7 +8,7 @@ import type { Program } from "@/lib/geometry/dsl";
 import { buildScene, type Scene } from "@/lib/geometry/pipeline";
 import { sceneToSvg } from "@/lib/geometry/svg";
 import { validateProgram } from "@/lib/geometry/validate";
-import { DEFAULT_PRESET, PRESET_BY_ID, type Preset } from "@/lib/presets";
+import { DEFAULT_PRESET, PRESET_BY_ID, PRESETS, type Preset } from "@/lib/presets";
 import { IDLE, runSession, type Phase, type SessionState } from "@/lib/refine/session";
 import { recordedEfforts } from "@/lib/refine/sessions";
 import { EFFORTS, LIMITS, type RefineEffort } from "@/lib/refine/types";
@@ -208,20 +208,21 @@ function StudioInner({ initialPreset, initialEffort, recording, sampleData }: St
   const sample = session.meta ? session.meta.placeholder : sampleData && !canWrite;
   // Where the program on the canvas came from, for the caption.
   const origin = pristine
-    ? "Preset"
+    ? "From the gallery"
     : draft === session.proposal
       ? sample
-        ? "Sample session · unreviewed revision"
+        ? "Sample replay · unreviewed revision"
         : "Claude's unreviewed revision"
       : session.frames.some((frame) => frame.program === draft)
         ? sample
-          ? "Sample session · not a model run"
+          ? "Sample replay · not a model run"
           : "Written by Claude"
         : "Edited by hand";
+  const layers = good.program.layers.length;
 
   return (
     <>
-      <section className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_22.5rem] lg:gap-12">
+      <section className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_22.5rem] lg:gap-12">
         <div ref={stage} className="flex min-w-0 scroll-mt-4 flex-col">
           {hasSession && (
             <div
@@ -232,7 +233,7 @@ function StudioInner({ initialPreset, initialEffort, recording, sampleData }: St
               {(
                 [
                   ["art", "Artwork"],
-                  ["refine", "Refinement"],
+                  ["refine", "Drafts and critiques"],
                 ] as const
               ).map(([id, label]) => (
                 <button
@@ -262,8 +263,9 @@ function StudioInner({ initialPreset, initialEffort, recording, sampleData }: St
               />
             </div>
           ) : (
-            <figure className="flex flex-1 flex-col items-center justify-center bg-wall px-4 py-6 sm:px-10 sm:py-10">
-              <div className="relative w-full max-w-[min(100%,36rem,max(18rem,calc(100dvh-23rem)))] border border-black/80 bg-white p-2.5 shadow-frame sm:p-4">
+            <figure className="flex flex-1 flex-col items-center justify-center bg-wall px-4 py-4 sm:px-10 sm:py-8 lg:py-6">
+              {/* Sized to the screen height so the main button stays on the first screen. */}
+              <div className="relative w-full max-w-[min(100%,max(14rem,calc(100dvh-33rem)))] border border-black/80 bg-white p-2.5 shadow-frame sm:p-4 lg:max-w-[min(100%,36rem,max(20rem,calc(100dvh-21rem)))]">
                 <div className="relative">
                   {poster && (
                     // eslint-disable-next-line @next/next/no-img-element
@@ -280,19 +282,21 @@ function StudioInner({ initialPreset, initialEffort, recording, sampleData }: St
           )}
         </div>
 
-        <div className="flex min-w-0 flex-col gap-6">
+        <div className="flex min-w-0 flex-col gap-4 lg:gap-5">
           <div>
             <p className="label">{origin}</p>
-            <h2 className="mt-1 text-3xl font-semibold tracking-tight">{title}</h2>
-            <p className="mt-2 text-sm text-muted">{describe(good.program)}</p>
-            <p className="mt-1 font-mono text-xs text-muted">
-              {plural(good.scene.stats.paths, "shape")} · seed {good.program.seed}
+            <h2 className="mt-0.5 text-2xl font-semibold tracking-tight lg:mt-1 lg:text-3xl">
+              {title}
+            </h2>
+            <p className="mt-1.5 hidden text-sm text-muted sm:block">
+              {plural(good.scene.stats.paths, "shape")}, drawn live from a {layers}-layer program
             </p>
           </div>
           <RefinePanel
             prompt={prompt}
             onPrompt={setPrompt}
             canWrite={canWrite}
+            sample={sample}
             effort={effort}
             onEffort={setChosenEffort}
             recorded={recorded}
@@ -307,18 +311,25 @@ function StudioInner({ initialPreset, initialEffort, recording, sampleData }: St
 
       <section aria-labelledby="gallery-heading" className="mt-10">
         <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-          <h2 id="gallery-heading" className="label">
-            Gallery
-          </h2>
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-0.5">
+            <h2 id="gallery-heading" className="label">
+              Gallery
+            </h2>
+            <p className="text-xs text-muted">
+              {PRESETS.length} patterns, each a small program drawn live. Pick one to load it.
+            </p>
+          </div>
           <p className="flex items-center gap-1.5 text-xs text-muted">
             <span aria-hidden className="size-2 rounded-full bg-accent" />
-            has a {sampleData ? "sample" : "recorded"} refinement session
+            has a {sampleData ? "sample replay" : "recorded session"} to watch
           </p>
         </div>
         <PresetStrip
           selectedId={preset?.id ?? null}
           onSelect={selectPreset}
-          sessionLabel={sampleData ? "sample refinement session" : "recorded refinement session"}
+          sessionLabel={
+            sampleData ? "has a sample replay to watch" : "has a recorded session to watch"
+          }
         />
       </section>
 

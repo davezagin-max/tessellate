@@ -10,7 +10,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 export const metadata: Metadata = {
   title: "Tessellate: AI geometric art studio",
   description:
-    "Describe a pattern in words. Claude Opus 5.5 writes it in a small geometry language, looks at the render, and refines it until it matches.",
+    "Describe a pattern in words. Claude Opus 5.5 writes it as a small drawing program, looks at its own drawing, critiques it, and improves it.",
 };
 
 export const viewport: Viewport = {

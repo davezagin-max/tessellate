@@ -9,13 +9,16 @@ const STEPS = [
   { title: "Review", note: "Claude looks at the PNG" },
 ];
 
-/** The loop in one row, then the three ideas behind it. Static; no client code. */
+/** The loop in one row with its technical names, then the three ideas behind it. Static. */
 export function HowItWorks() {
   return (
     <section aria-labelledby="how-heading" className="mt-14 border-t border-border pt-10">
       <h2 id="how-heading" className="text-xl font-semibold tracking-tight">
-        How it works
+        Under the hood
       </h2>
+      <p className="mt-1.5 max-w-2xl text-sm leading-6 text-muted">
+        The same loop as the three steps at the top, with the engineering names.
+      </p>
 
       <ol className="mt-6 grid grid-cols-2 gap-px border border-border bg-border sm:grid-cols-5">
         {STEPS.map((step, index) => (
