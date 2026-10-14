@@ -1,26 +1,42 @@
 # Tessellate
 
-> Describe a pattern in words. Claude Opus 5.5 writes it in a small geometry language, the app renders it, Claude looks at the render, and revises the program until it matches.
+Describe a pattern in words, and Claude turns it into geometric art: it writes the pattern as a small drawing program, looks at the picture it made, critiques it, and improves it.
 
 [![CI](https://github.com/davezagin-max/tessellate/actions/workflows/ci.yml/badge.svg)](https://github.com/davezagin-max/tessellate/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Live demo](https://img.shields.io/badge/demo-live-brightgreen.svg)](https://tessellate.vercel.app)
+[![Live demo: coming soon](https://img.shields.io/badge/live%20demo-coming%20soon-lightgrey.svg)](#run-locally)
 
-![A refinement session in Tessellate: first draft, two revisions, and the critique and score for each](docs/hero.png)
+![Tessellate after one click: the headline and three steps at the top, then a first draft and two revisions side by side, each with a match score out of 10 and a list of what matches and what is off](docs/hero.png)
 
-![The session replaying step by step](docs/demo.gif)
+*One click on the first screen replays a session. Each column is one drawing with its match score: the first draft scores 4/10 (the stars float apart, and there are no black diamonds); two rounds of critique and revision later, it scores 9/10. This replay is a hand-written sample (see below); the drawings are real.*
 
-## Try it in 10 seconds
+## What it does
 
-**[Open the live demo](https://tessellate.vercel.app)**: no key, no sign-up. A preset is already drawn. Press **Watch Claude refine this** to replay a session: a first draft, then up to three reviews side by side, each with a score, what matches, what is off, and the exact changes made to the program. Then pick any of the 12 presets, drag a slider, and download a plotter-ready SVG.
+- **Turns a sentence into a drawing.** You describe a pattern, for example "eight-point stars in fine ink lines that meet tip to tip". Claude writes it as a short drawing program (shapes, symmetry, colours), and your browser draws it as crisp vector art.
+- **Checks its own work.** The app turns each drawing into a picture and shows it to Claude next to the original request. Claude scores how well it matches, lists what is off, and revises the program, up to three times.
+- **Lets you take over.** Twelve ready-made patterns, sliders for the numbers in the program, and downloads as PNG or as an SVG file a pen plotter or laser cutter can follow.
+- **Keeps the AI on a leash.** Code checks every program before it is drawn and caps its size, so nothing Claude (or you) writes can freeze the page. The list of what changed between drafts is computed by code, not taken from Claude's words.
 
-Demo mode replays sessions from fixtures. Add your own Anthropic key in the app to run it live with your own prompt.
+No API key existed while this was built, so the Claude sessions in the demo are hand-written examples, and the app labels them "sample" wherever they appear. The drawings in a replay are real: your browser draws each one from its program. Demo data in this commit is hand-written sample output; `pnpm record` replaces it with real Claude Opus 5.5 runs.
 
-Demo data in this commit is hand-written sample output; `pnpm record` replaces it with real Claude Opus 5.5 runs. The app labels it as a sample session everywhere it appears. The renders in a replay are real: each one is drawn in your browser from the program beside it.
+## Try it
 
-| Gallery | Tune by hand | Dark | Phone |
+The live demo is coming soon. Until then, this is the one-click tour: a pattern is already drawn, and **Watch Claude draw and refine this** replays a session step by step, with a status line saying what is happening.
+
+![The replay: a first draft appears, then each round adds Claude's score, what matches, what is off, and the revised drawing](docs/demo.gif)
+
+To run it yourself with no key (details in [Run locally](#run-locally)):
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Then pick any of the 12 patterns in the gallery, drag a slider, or download a plotter-ready SVG. Add your own Anthropic API key in the app (the "Add your Anthropic API key" link at the top) to write your own request and run it live.
+
+| First screen | Tune by hand | Dark | Phone |
 | --- | --- | --- | --- |
-| ![The first screen: a preset and the gallery strip](docs/gallery.png) | ![Parameter sliders, validator read-out, and exports](docs/studio.png) | ![A Penrose session in the dark theme](docs/hero-dark.png) | ![The studio at 390 px wide](docs/mobile.png) |
+| ![The first screen: headline, three steps, a pattern, and the main button](docs/gallery.png) | ![Parameter sliders, the validator's read-out, and exports](docs/studio.png) | ![A Penrose session in the dark theme](docs/hero-dark.png) | ![The first screen at 390 px wide, with the main button visible](docs/mobile.png) |
 
 ## Why it's interesting
 
@@ -75,12 +91,12 @@ Generators: `polygon` (also stars, circles, lines), `lsystem`, `voronoi`, `penro
 | Structured outputs for the program and for the review | The answer is parsed straight into the language's schema. The schema carries no bounds (the API rejects them), so a deterministic validator clamps and checks after parsing. |
 | Vision on its own output | Writing geometry blind is hard: stars that should touch float apart, the wrong tile gets the colour. The browser renders each program to a 1024 px PNG and sends it back with the original prompt, so the review is of what was actually drawn. |
 | An iterative loop, stateless per step | Draft, then up to three reviews, each returning `{ matches, gaps, score, done, revisedProgram }`. Every call is a fresh conversation with the prompt, the current program, and its image, so there is no long history to replay and any step can be recorded or replayed alone. Stop rules are code: `done`, an unchanged revision, or the limit. |
-| Effort control | A low / medium / high selector sits next to the cost meter and is passed explicitly on every call, so a visitor can trade thinking depth for cost and see the token count change. |
+| Effort control | A low / medium / high selector, explained in plain words in the UI, is passed explicitly on every call; the cost line under the run button shows what each run cost, in dollars and tokens, so a visitor can see effort trade thinking for cost. |
 | One self-correction pass | If a well-formed answer fails validation, the validator's messages are appended as the next user turn (the first turn, thinking blocks included, is sent back untouched) and Claude gets one retry. |
 | Prompt caching | The language reference is generated from the parameter table and is identical on every call, so the system prompt is sent with a cache breakpoint. |
 | Untrusted input and refusals | The visitor's prompt and the program under review are wrapped in tags the system prompt declares to be data. A refusal is returned as a normal result and shown as a clear message with what was spent so far. |
 
-Code computes the facts; the model reasons and explains. The score bar, shape counts, plot statistics, and the "changes to the program" list under each revision are all computed (the last one is a diff of the two programs), never taken from the model's prose.
+Code computes the facts; the model reasons and explains. Shape counts, plot statistics, and the "changes to the program" list under each revision are computed (the last one is a diff of the two programs), never taken from the model's prose. The match score is the model's own judgement, a structured field shown as returned.
 
 **Your key stays yours.** The app is bring-your-own-key. The key lives in your browser tab's memory (optionally `sessionStorage`), travels in an `x-anthropic-key` header to this app's own API route, and is used for that one request. The server never stores or logs it. Each live action shows its token count and cost.
 
@@ -122,7 +138,6 @@ CI runs the same checks plus a gitleaks secret scan on every push.
 - **Curves are polylines** (a circle is a 64-gon), which is what a plotter wants anyway.
 - **Plotter export** outlines a shape in its stroke colour (or its fill colour if it has no stroke), drops fills and opacity, and orders strokes greedily rather than optimally.
 - **Rendering runs on the main thread.** The cap bounds the worst case (in a 6,000-program fuzz run during review, the slowest accepted program built in about 130 ms), so I left out a Web Worker.
-- **On a phone the main button sits just below the first screen.** The artwork comes first.
 - Three effort levels are offered; `xhigh` and `max` are left out. Each step is one request, so there is no streamed progress text during a live call.
 - Rate limiting is in memory per server instance: enough to blunt abuse of a demo, not a global quota.
 
